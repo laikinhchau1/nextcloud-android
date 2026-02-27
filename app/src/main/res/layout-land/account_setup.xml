@@ -18,12 +18,11 @@
 
     <ImageView
         android:id="@+id/thumbnail"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
         android:layout_gravity="center"
-        android:layout_weight="1"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/logo" />
+        android:src="@mipmap/ic_launcher" />
 
     <ScrollView
         android:layout_width="0dp"

@@ -256,6 +256,12 @@ public class MainApp extends Application implements HasAndroidInjector, NetworkC
     }
 
     private void initDagger() {
+        appComponent = DaggerAppComponent.builder()
+            .application(this)
+            .build();
+
+        appComponent.inject(this);
+
         // we don't want to handle crashes occurring inside crash reporter activity/process;
         // let the platform deal with those
         final boolean isCrashReportingProcess = getAppProcessName().endsWith(":crash");
@@ -269,12 +275,6 @@ public class MainApp extends Application implements HasAndroidInjector, NetworkC
                 Thread.setDefaultUncaughtExceptionHandler(crashReporter);
             }
         }
-
-        appComponent = DaggerAppComponent.builder()
-            .application(this)
-            .build();
-
-        appComponent.inject(this);
     }
 
     /**

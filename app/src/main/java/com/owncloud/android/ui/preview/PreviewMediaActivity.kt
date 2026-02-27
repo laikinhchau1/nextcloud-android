@@ -279,7 +279,7 @@ class PreviewMediaActivity :
     }
 
     private fun genericThumbnail(): Drawable? {
-        val result = AppCompatResources.getDrawable(this, R.drawable.logo)
+        val result = AppCompatResources.getDrawable(this, R.mipmap.ic_launcher)
         result?.let {
             if (!resources.getBoolean(R.bool.is_branded_client)) {
                 DrawableCompat.setTint(it, resources.getColor(R.color.primary, this.theme))

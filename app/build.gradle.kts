@@ -99,7 +99,7 @@ android {
             "TEST_SERVER_PASSWORD" to "ncTestServerPassword.toString()",
             "disableAnalytics" to "true"
         )
-        applicationId = "com.nextcloud.client"
+        applicationId = "com.hpa.cloud"
         minSdk = 28
         targetSdk = 36
         compileSdk = 36
@@ -137,29 +137,29 @@ android {
         productFlavors {
             // used for f-droid
             register("generic") {
-                applicationId = "com.nextcloud.client"
+                applicationId = "com.hpa.cloud"
                 dimension = "default"
             }
 
             register("gplay") {
-                applicationId = "com.nextcloud.client"
+                applicationId = "com.hpa.cloud"
                 dimension = "default"
             }
 
             register("huawei") {
-                applicationId = "com.nextcloud.client"
+                applicationId = "com.hpa.cloud"
                 dimension = "default"
             }
 
             register("versionDev") {
-                applicationId = "com.nextcloud.android.beta"
+                applicationId = "com.hpa.cloud.dev"
                 dimension = "default"
                 versionCode = 20220322
                 versionName = "20220322"
             }
 
             register("qa") {
-                applicationId = "com.nextcloud.android.qa"
+                applicationId = "com.hpa.cloud.qa"
                 dimension = "default"
                 versionCode = 1
                 versionName = "1"

@@ -28,6 +28,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
@@ -236,11 +237,25 @@ public class MainApp extends Application implements HasAndroidInjector, NetworkC
 
     @Override
     protected void attachBaseContext(Context base) {
-        super.attachBaseContext(base);
+        super.attachBaseContext(setLocale(base));
 
         initGlobalContext(this);
         initDagger();
+    }
 
+    /**
+     * Set Vietnamese as default locale for the app
+     */
+    private Context setLocale(Context context) {
+        Locale locale = new Locale("vi");
+        Locale.setDefault(locale);
+
+        Configuration config = new Configuration(context.getResources().getConfiguration());
+        config.setLocale(locale);
+        return context.createConfigurationContext(config);
+    }
+
+    private void initDagger() {
         // we don't want to handle crashes occurring inside crash reporter activity/process;
         // let the platform deal with those
         final boolean isCrashReportingProcess = getAppProcessName().endsWith(":crash");
@@ -254,9 +269,7 @@ public class MainApp extends Application implements HasAndroidInjector, NetworkC
                 Thread.setDefaultUncaughtExceptionHandler(crashReporter);
             }
         }
-    }
 
-    private void initDagger() {
         appComponent = DaggerAppComponent.builder()
             .application(this)
             .build();

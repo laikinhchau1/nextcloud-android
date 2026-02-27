@@ -409,25 +409,17 @@ public abstract class DrawerActivity extends ToolbarActivity
         boolean isClientBranded = getResources().getBoolean(R.bool.is_branded_client);
         final OCCapability capability = getCapabilities();
 
+        // Set logo from local drawable (always use custom logo, not from server)
+        ImageView imageHeader = mNavigationViewHeader.findViewById(R.id.drawer_header_logo);
+        imageHeader.setImageResource(R.mipmap.ic_launcher);
+        imageHeader.setAdjustViewBounds(true);
+
         if (capability != null && account != null && capability.getServerBackground() != null && !isClientBranded) {
             int primaryColor = themeColorUtils.unchangedPrimaryColor(account, this);
-            String serverLogoURL = capability.getServerLogo();
 
             // set background to primary color
             LinearLayout drawerHeader = mNavigationViewHeader.findViewById(R.id.drawer_header_view);
             drawerHeader.setBackgroundColor(primaryColor);
-
-            if (!TextUtils.isEmpty(serverLogoURL) && URLUtil.isValidUrl(serverLogoURL)) {
-                Target<Drawable> target = createSVGLogoTarget(primaryColor, capability);
-                getClientRepository().getNextcloudClient(nextcloudClient -> {
-                    GlideHelper.INSTANCE.loadIntoTarget(DrawerActivity.this,
-                                                        nextcloudClient,
-                                                        serverLogoURL,
-                                                        target,
-                                                        R.drawable.background);
-                    return Unit.INSTANCE;
-                });
-            }
         }
 
         // hide ecosystem apps according to user preference or in branded client

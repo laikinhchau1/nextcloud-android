@@ -1,32 +1,26 @@
 {
   "project_info": {
-    "project_number": "",
-    "project_id": ""
+    "project_number": "589122628082",
+    "project_id": "next-cloud-af0e9",
+    "storage_bucket": "next-cloud-af0e9.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "",
+        "mobilesdk_app_id": "1:589122628082:android:a741048d43a16b4f3be36b",
         "android_client_info": {
-          "package_name": "com.nextcloud.android.beta"
+          "package_name": "com.hpa.cloud"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": ""
+          "current_key": "AIzaSyDSHW8NIwdnDUHOFtRcwibgmanxizD3dtU"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 1,
           "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 1
         }
       }
     }
